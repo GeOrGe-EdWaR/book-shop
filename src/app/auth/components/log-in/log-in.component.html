@@ -1,0 +1,67 @@
+<section>
+  <div class="row">
+    <div class="col-lg-5 col-md-2">
+      <img
+        src="../../../../assets/log-in img.png "
+        class="img img-fluid w-100"
+      />
+    </div>
+    <div class="col-lg-5 col-md-2 container-fluid">
+      <img src="../../../../assets/logo.png" class="mx-5 py-5 logo" />
+      <p class="text-secondary text-center">Welcome back!</p>
+      <h2 class="text-center">Login to your account</h2>
+      <form (ngSubmit)="onSubmit(logInForm)" [formGroup]="logInForm">
+        <label for="email" class="fw-semibold">E-mail</label>
+        <div class="example-container">
+          <mat-form-field class="py-3 w-100">
+            <mat-label>Enter your email</mat-label>
+            <input
+              matInput
+              placeholder="pat@example.com"
+              formControlName="email"
+              required
+            />
+          </mat-form-field>
+        </div>
+
+        <label for="password " class="fw-semibold">Password</label>
+        <mat-form-field class="py-3 w-100">
+          <mat-label>Enter your password</mat-label>
+          <input
+            matInput
+            [type]="isHide ? 'password' : 'text'"
+            formControlName="password"
+          />
+          <button
+          type="button"
+          mat-icon-button
+          matSuffix
+          (click)="isHide = !isHide"
+          [attr.aria-label]="'Hide password'"
+          [attr.aria-pressed]="isHide"
+          >
+          <mat-icon>{{ isHide ? "visibility_off" : "visibility" }}</mat-icon>
+        </button>
+      </mat-form-field>
+
+      <a routerLink="/auth/forgetPassword" >forget password ?</a>
+        <button
+          mat-raised-button
+          color="warn"
+          class="w-100 my-4"
+          [disabled]="logInForm.invalid"
+        >
+          log-In
+        </button>
+        <button
+          mat-raised-button
+          class="w-100"
+          routerLink="/auth/register"
+          type="button"
+        >
+          Register
+        </button>
+      </form>
+    </div>
+  </div>
+</section>
